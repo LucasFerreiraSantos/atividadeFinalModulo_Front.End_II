@@ -1,6 +1,6 @@
-![portal rick and morty](./img/rick-and-morty-portal.png)
-
 # Aplicação para Consumir a API Rick and Morty
+
+![portal rick and morty](./img/rick-and-morty-portal.png)
 
 ### O que foi feito no projeto
 
