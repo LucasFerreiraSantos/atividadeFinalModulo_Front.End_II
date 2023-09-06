@@ -1,25 +1,41 @@
+/* VARIÁVEIS */
+:root {
+  --cor-primary: #17594a;
+  --cor-secundary: #a6ff96;
+  --cor-tertiary: #040d12;
+  --cor-quartiary: #016a70;
+  --cor-fifth: #f5f5f5;
+}
+
+/* INTRUÇÕES GERAIS */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
+/* BACKGROUND */
 body {
   width: 100vw;
   height: 100vh;
-  background: linear-gradient(287.56deg, #17594a 0%, #a6ff96 100%);
+  background: linear-gradient(
+    287.56deg,
+    var(--cor-primary) 0%,
+    var(--cor-secundary) 100%
+  );
 
   font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
     Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
   font-size: 17px;
 }
 
+/* HEADER */
 header {
-  box-shadow-button: 2px #17594a;
+  box-shadow: 0 0 10px 10px var(--cor-tertiary);
 }
 
 header nav {
-  background-color: #040d12;
+  background-color: var(--cor-tertiary);
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
@@ -55,7 +71,7 @@ header nav img {
   outline: 0;
   padding: 0;
   margin-left: 10px;
-  color: #17594a;
+  color: var(--cor-primary);
 
   transition: 0.6s;
 
@@ -87,7 +103,7 @@ nav:hover > .search_bar .search_text {
 }
 
 nav:hover > .search_bar {
-  background-color: #a6ff96;
+  background-color: var(--cor-secundary);
 }
 
 .search_bar:hover > .search_btn .portal_btn {
@@ -96,12 +112,13 @@ nav:hover > .search_bar {
 
 .search_bar:hover > .search_btn .rick_btn {
   display: block;
-  transition: 0.6s;
 }
 
 ::-webkit-input-placeholder {
   font-size: 17px;
   font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
     Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
-  color: #016a70;
+  color: var(--cor-quartiary);
 }
+
+
