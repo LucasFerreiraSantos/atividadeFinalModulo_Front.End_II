@@ -1,0 +1,107 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  width: 100vw;
+  height: 100vh;
+  background: linear-gradient(287.56deg, #17594a 0%, #a6ff96 100%);
+
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+  font-size: 17px;
+}
+
+header {
+  box-shadow-button: 2px #17594a;
+}
+
+header nav {
+  background-color: #040d12;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+}
+
+header nav img {
+  width: 90px;
+  margin-left: 20px;
+}
+
+.search_bar {
+  width: 600px;
+  height: 60px;
+  border-radius: 20px;
+  margin-right: 20px;
+
+  transition: 0.6s;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.search_btn {
+  margin-right: 10px;
+}
+
+.search_text {
+  width: 0px;
+  background: none;
+  border: 0;
+  outline: 0;
+  padding: 0;
+  margin-left: 10px;
+  color: #17594a;
+
+  transition: 0.6s;
+
+  font-size: 17px;
+}
+
+.portal_btn {
+  width: 60px;
+  height: 50px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  cursor: pointer;
+}
+
+.rick_btn {
+  display: none;
+  width: 60px;
+  height: 60px;
+}
+
+nav:hover > .search_bar .search_text {
+  width: 500px;
+  height: 50px;
+  border-radius: 10px;
+  margin-left: 20px;
+}
+
+nav:hover > .search_bar {
+  background-color: #a6ff96;
+}
+
+.search_bar:hover > .search_btn .portal_btn {
+  display: none;
+}
+
+.search_bar:hover > .search_btn .rick_btn {
+  display: block;
+  transition: 0.6s;
+}
+
+::-webkit-input-placeholder {
+  font-size: 17px;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+  color: #016a70;
+}
