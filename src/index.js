@@ -6,7 +6,6 @@ function totalCharacters() {
     .then((res) => {
       res.json().then((data) => {
         const characters = data;
-        console.log(characters);
         data_api.innerHTML = `
         <p>PERSONAGENS: ${characters.info.count}</p>
         <p>EPISÓDIOS: ${characters.results[0].episode.length}</p>
@@ -24,7 +23,22 @@ function getCharacters() {
       res.json().then((data) => {
         const characters = data.results;
 
-        characters.map((character) => {
+        characters.forEach((character) => {
+          // BUSCAR O ÚLTIMO EPISÓDIO
+          async function lastEpisode(character) {
+            const ep = (await character.episode.length) - 1;
+            try {
+              const response = await fetch(`${character.episode[ep]}`).then(
+                (value) => value.json()
+              );
+              return response.name;
+            } catch (error) {
+              console.log("Erro no Get:", error);
+            }
+          }
+
+          const lastEp = lastEpisode(character);
+
           const card = document.createElement("div");
           card.classList.add("character_card");
 
@@ -36,7 +50,7 @@ function getCharacters() {
         <p>última localização conhecida</p>
         <p><strong>${character.location.name}</strong></p>
         <p>visto a última vez em:</p>
-        <p><strong>no episódio ${character.episode.length}</strong></p>
+        <p><strong>${lastEp}</strong></p>
         </div>
       `;
           characterContainer.appendChild(card);
