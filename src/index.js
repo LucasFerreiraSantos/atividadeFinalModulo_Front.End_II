@@ -24,20 +24,6 @@ function getCharacters() {
         const characters = data.results;
 
         characters.forEach((character) => {
-          // BUSCAR O ÚLTIMO EPISÓDIO
-          async function lastEpisode(character) {
-            const ep = (await character.episode.length) - 1;
-            try {
-              const response = await fetch(`${character.episode[ep]}`).then(
-                (value) => value.json()
-              );
-              return response.name;
-            } catch (error) {
-              console.log("Erro no Get:", error);
-            }
-          }
-
-          const lastEp = lastEpisode(character);
 
           const card = document.createElement("div");
           card.classList.add("character_card");
@@ -49,15 +35,13 @@ function getCharacters() {
         <p><strong>${character.status} - ${character.species}</strong></p>
         <p>última localização conhecida</p>
         <p><strong>${character.location.name}</strong></p>
-        <p>visto a última vez em:</p>
-        <p><strong>${lastEp}</strong></p>
         </div>
       `;
           characterContainer.appendChild(card);
         });
       });
     })
-    .catch((err) => console.error("Não é possível achar a informação", err));
+    .catch((err) => console.error("Não foi possível encontrar a informação", err));
 }
 
 getCharacters();
