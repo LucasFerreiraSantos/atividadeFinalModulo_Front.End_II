@@ -41,6 +41,12 @@ header nav {
   flex-wrap: wrap;
   justify-content: space-between;
   align-items: center;
+
+  @media (max-width: 500px) {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
 }
 
 header nav img {
@@ -59,7 +65,13 @@ header nav img {
   display: flex;
   justify-content: space-between;
   align-items: center;
+
+  @media  (max-width: 500px){
+    width: 280px;
+  }
 }
+
+
 
 .search_btn {
   margin-right: 10px;
@@ -77,6 +89,10 @@ header nav img {
   transition: 0.6s;
 
   font-size: 17px;
+
+  @media  (max-width: 500px){
+    font-size: 14px;
+  }
 }
 
 .portal_btn {
@@ -101,6 +117,10 @@ nav:hover > .search_bar .search_text {
   height: 50px;
   border-radius: 10px;
   margin-left: 20px;
+
+  @media (max-width: 500px) {
+    width: 250px;
+  }
 }
 
 nav:hover > .search_bar {
@@ -120,6 +140,10 @@ nav:hover > .search_bar {
   font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
     Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
   color: var(--cor-quartiary);
+
+  @media  (max-width: 500px){
+    font-size: 8px;
+  }
 }
 
 /* MAIN */
@@ -195,4 +219,8 @@ footer {
   margin-bottom: 10px;
   font-weight: 600;
   font-size: 12px;
+}
+
+.imageFooter {
+  width: 200px;
 }
