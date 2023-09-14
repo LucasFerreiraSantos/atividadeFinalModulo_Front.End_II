@@ -42,7 +42,7 @@ header nav {
   justify-content: space-between;
   align-items: center;
 
-  @media (max-width: 500px) {
+  @media (max-width: 767px) {
     flex-direction: column;
     justify-content: center;
     align-items: center;
@@ -66,8 +66,8 @@ header nav img {
   justify-content: space-between;
   align-items: center;
 
-  @media  (max-width: 500px){
-    width: 280px;
+  @media (max-width: 767px) {
+    width: 285px;
   }
 }
 
@@ -118,7 +118,7 @@ nav:hover > .search_bar .search_text {
   border-radius: 10px;
   margin-left: 20px;
 
-  @media (max-width: 500px) {
+  @media (max-width: 767px) {
     width: 250px;
   }
 }
