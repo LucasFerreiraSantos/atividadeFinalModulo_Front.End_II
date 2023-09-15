@@ -1,8 +1,16 @@
 // GERADOR DA LISTA DE CARDS
-async function getCharacters() {
-  const characterContainer = document.querySelector(".character_list");
+let currentPage = 1;
+const characterContainer = document.querySelector(".character_list");
+const btn_search_character = document.getElementById("btn_search_character");
 
-  await fetch("https://rickandmortyapi.com/api/character")
+async function getCharacters(page = 1) {
+  const params = {
+    page,
+  };
+
+  await fetch("https://rickandmortyapi.com/api/character", {
+    params,
+  })
     .then((res) => {
       res.json().then((data) => {
         const characters = data.results;
@@ -47,19 +55,34 @@ async function totalCharacters() {
 }
 
 // VOLTAR UMA PÁGINA
+function previousPage() {
+  characterContainer.innerHTML = "";
+  if (currentPage >= 1) {
+    currentPage--;
+    getCharacters(currentPage);
+  }
+}
+
 const btnPaginatePrevious = document.getElementById("btnPaginatePrevious");
-btnPaginatePrevious.addEventListener("click", (e) => {
-  e.preventDefault();
-  const currentPages = 4;
-  const changePage = window.location(
-    `https://rickandmortyapi.com/api/character/?page=${currentPages - 1}`
-  );
-  console.log(changePage);
-});
+btnPaginatePrevious.addEventListener("click", previousPage);
 
 // AVANÇAR UMA PÁGINA
+function nextPage() {
+  characterContainer.innerHTML = "";
+  if (currentPage < 42) {
+    currentPage++;
+    getCharacters(currentPage);
+  }
+}
+
 const btnPaginateNext = document.getElementById("btnPaginateNext");
-btnPaginateNext.addEventListener("click", (e) => {});
+btnPaginateNext.addEventListener("click", nextPage);
+
+// PESQUISAR POR NOME
+btn_search_character.addEventListener("input", () => {
+  currentPage = 1;
+  getCharacters(currentPage, btn_search_character.value);
+});
 
 getCharacters();
 totalCharacters();
