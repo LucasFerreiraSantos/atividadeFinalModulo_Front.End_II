@@ -1,11 +1,12 @@
 // GERADOR DA LISTA DE CARDS
 let currentPage = 1;
 const characterContainer = document.querySelector(".character_list");
-const btn_search_character = document.getElementById("btn_search_character");
+const input_search_character = document.getElementById("btn_search_character");
 
-async function getCharacters(page = 1) {
+async function getCharacters(page = 1, name = "") {
   const params = {
     page,
+    name
   };
 
   await fetch("https://rickandmortyapi.com/api/character", {
@@ -79,9 +80,9 @@ const btnPaginateNext = document.getElementById("btnPaginateNext");
 btnPaginateNext.addEventListener("click", nextPage);
 
 // PESQUISAR POR NOME
-btn_search_character.addEventListener("input", () => {
+input_search_character.addEventListener("input", () => {
   currentPage = 1;
-  getCharacters(currentPage, btn_search_character.value);
+  getCharacters(currentPage, input_search_character.value);
 });
 
 getCharacters();

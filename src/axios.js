@@ -1,29 +1,33 @@
 const characterContainer = document.querySelector(".character_list");
-const btn_search_character = document.getElementById("btn_search_character");
+const data_api = document.getElementById("data_api");
+const input_search_character = document.getElementById("input_search_character");
 
-async function getCharacters(page = 1) {
-  const params = {
-    page,
-  };
+let currentPage = 1;
 
+async function getCharacters(page = 1, name = "") {
   try {
-    const response = await api.get("/", {
+    const params = {
+      page,
+      name
+    };
+
+    const response = await api.get("/character", {
       params,
     });
-    const results = data.results;
+    const result = response.data.results;
     const info = response.data.info;
-    console.log(info);
-    console.log(results);
 
-    createContainersCards(results)
+    createContainersCards(result)
+    totalCharacters(info, result)
+
   } catch (error) {
     console.log("Erro ao chamar API", error);
   }
 }
 
-function createContainersCards(results) {
-  const characters = results
-
+// CRIAR CARDS
+function createContainersCards(result) {
+  const characters = result
   characters.forEach(character => {
     const card = document.createElement("div");
     card.classList.add("character_card");
@@ -38,7 +42,48 @@ function createContainersCards(results) {
       </div>
     `;
     characterContainer.appendChild(card);
-  }
+  })
 }
 
+// PEGAR O TOTAL DE PERSONAGENS
+function totalCharacters(info, result) {
+  const totalCharacters = info
+  const totalEpisodes = result
+  data_api.innerHTML = `
+    <p>PERSONAGENS: ${totalCharacters.count}</p>
+    <p>EPISÓDIOS: ${totalEpisodes[0].episode.length}</p>
+  `;
+}
+
+// VOLTAR UMA PÁGINA
+function previousPage() {
+  if (currentPage >= 1) {
+    characterContainer.innerHTML = "";
+    currentPage--;
+    getCharacters(currentPage);
+  }
+}
+const btnPaginatePrevious = document.getElementById("btnPaginatePrevious");
+btnPaginatePrevious.addEventListener("click", previousPage);
+
+// AVANÇAR UMA PÁGINA
+function nextPage() {
+  if (currentPage < 42) {
+    characterContainer.innerHTML = "";
+    currentPage++;
+    getCharacters(currentPage);
+  }
+}
+const btnPaginateNext = document.getElementById("btnPaginateNext");
+btnPaginateNext.addEventListener("click", nextPage);
+
+// PESQUISAR POR NOME
+input_search_character.addEventListener('input', () => {
+  characterContainer.innerHTML = "";
+  currentPage = 1
+  getCharacters(currentPage, input_search_character.value)
+})
+
 getCharacters();
+
+
