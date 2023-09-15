@@ -1,8 +1,8 @@
-const data_api = document.getElementById("data_api");
-
 // PEGUEI O TOTAL DE PERSONAGENS
-function totalCharacters() {
-  fetch("https://rickandmortyapi.com/api/character")
+async function totalCharacters() {
+  const data_api = document.getElementById("data_api");
+
+  await fetch("https://rickandmortyapi.com/api/character")
     .then((res) => {
       res.json().then((data) => {
         const characters = data;
@@ -16,15 +16,15 @@ function totalCharacters() {
 }
 
 // GERADOR DA LISTA DE CARDS
-function getCharacters() {
+async function getCharacters() {
   const characterContainer = document.querySelector(".character_list");
-  fetch("https://rickandmortyapi.com/api/character")
+
+  await fetch("https://rickandmortyapi.com/api/character")
     .then((res) => {
       res.json().then((data) => {
         const characters = data.results;
 
         characters.forEach((character) => {
-
           const card = document.createElement("div");
           card.classList.add("character_card");
 
@@ -41,7 +41,9 @@ function getCharacters() {
         });
       });
     })
-    .catch((err) => console.error("Não foi possível encontrar a informação", err));
+    .catch((err) =>
+      console.error("Não foi possível encontrar a informação", err)
+    );
 }
 
 getCharacters();
