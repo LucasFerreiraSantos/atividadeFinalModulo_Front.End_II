@@ -1,45 +1,39 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Atividade Final de Módulo - Front-End II</title>
+    <title>Final Module Activity - Front-End III</title>
+
     <link rel="stylesheet" href="./css/style.css" />
+
+    <link rel="stylesheet" href="./node_modules/bootstrap/dist/css/bootstrap.css">
   </head>
-  <body>
-    <header>
-      <nav>
-        <div>
-          <img
-            src="./img/rick-and-morty-portal.png"
+  <body class="vh-100 vw-100">
+    <header class="container-fluid">
+      <nav class="row">
+        <div class="col-2">
+          <img class="rounded float-start"
+            src="./img/RICK_MORTY_ICON-01.svg"
             alt="rick and morty portal"
           />
         </div>
-        <div class="search_bar">
-          <input
-            id="input_search_character"
-            type="text"
-            placeholder="Fala o nome de um personagem! E fica tranquilebaaa..."
-            class="search_text"
-          />
-          <a
-            href="#"
-            class="search_btn"
-          >
-            <img
-              src="./img/portal_rick_and_morty.png"
-              alt="portal rick and morty"
-              class="portal_btn"
-            />
-            <img
-              src="./img/rick_suspect.png"
-              alt="rick suspect"
-              class="rick_btn"
-            />
-          </a>
-        </div>
       </nav>
     </header>
+    <section class="container text-center">
+      <div class="row">
+        <div class="col">
+          <p class="fs-1 fw-bold text-success">
+            API the Rick and Morty
+          </p>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col">
+          <input class="w-50" id="input_search_character" type="text" placeholder="Pesquisar"/>
+        </div>
+      </div>
+    </section>
 
     <main>
       <div class="character_list"></div>
@@ -50,15 +44,11 @@
         <button id="btnPaginatePrevious" type="button">anterior</button>
         <button id="btnPaginateNext" type="button">próximo</button>
       </div>
-      <img
-        class="imageFooter"
-        src="./img/rick_suspect.png"
-        alt="rick suspect"
-      />
       <div id="data_api"></div>
       <p class="developer_create">Desenvolvido por: Lucas Ferreira em 2023.</p>
     </footer>
 
+    <script src="./node_modules/bootstrap/dist/js/bootstrap.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <script src="./src/apiAxios.js"></script>
     <script src="./src/axios.js"></script>
