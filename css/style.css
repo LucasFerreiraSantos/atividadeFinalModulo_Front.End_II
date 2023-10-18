@@ -42,3 +42,12 @@ body {
   font-family: 'Pixelify Sans', sans-serif !important;
   color: green !important;
 }
+
+.card-width {
+  width: 500px;
+  height: 200px;
+}
+
+.text-card {
+  font-size: 10px;
+}
