@@ -30,19 +30,22 @@ function createContainersCards(result) {
   const characters = result
   characters.forEach(character => {
     const card = document.createElement("div");
-    card.classList.add("character_card");
+    card.classList.add("col-6 card mb-3")
+    card.style.maxWidth = "540px"
 
     card.innerHTML = `
-    <div class="row">
-      <div class="col-6">
-        <img src="${character.image}" alt="#">
-        <div>
-        <h3><strong>${character.name}</strong></h3>
-        <p><strong>${character.status} - ${character.species}</strong></p>
-        <p>última localização conhecida</p>
-        <p><strong>${character.location.name}</strong></p>
-      </div>
-    </div>
+          <div class="row g-0">
+            <div class="col-md-4">
+              <img src="${character.image}" class="img-fluid rounded-start" alt="image characters">
+            </div>
+            <div class="col-md-8">
+              <div class="card-body">
+                <h3><strong>${character.name}</strong></h3>
+                <p><strong>${character.status} - ${character.species}</strong></p>
+                <p>última localização conhecida</p>
+                <p><strong>${character.location.name}</strong></p>
+              </div>
+          </div>
     `;
     characterContainer.appendChild(card);
   })
