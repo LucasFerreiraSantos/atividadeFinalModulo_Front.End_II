@@ -5,47 +5,75 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Final Module Activity - Front-End III</title>
 
-    <link rel="stylesheet" href="./css/style.css" />
-
     <link rel="stylesheet" href="./node_modules/bootstrap/dist/css/bootstrap.css">
+    <link rel="stylesheet" href="./css/style.css" />
   </head>
-  <body class="vh-100 vw-100">
+  <body>
+
     <header class="container-fluid">
       <nav class="row">
         <div class="col-2">
-          <img class="rounded float-start"
+          <img class="image-fluid p-3 logo-rick-and-morty"
             src="./img/RICK_MORTY_ICON-01.svg"
             alt="rick and morty portal"
           />
         </div>
       </nav>
     </header>
-    <section class="container text-center">
+
+    <section class="container-md text-center">
       <div class="row">
         <div class="col">
-          <p class="fs-1 fw-bold text-success">
+          <h1 class="fw-bold text-primary">
             API the Rick and Morty
-          </p>
+          </h1>
         </div>
       </div>
       <div class="row">
-        <div class="col">
-          <input class="w-50" id="input_search_character" type="text" placeholder="Pesquisar"/>
+        <div class="col input-group border border-2 mb-2 rounded-pill">
+          <input class="form-control border-0 bg-black no-outline text-primary" id="input_search_character" type="text" placeholder="Pesquisar"/>
+          <span class="p-2"><img class="image-seach" src="./img/searchmagnifierinterfacesymbol1_79893.svg"></span>
         </div>
       </div>
     </section>
 
     <main>
-      <div class="character_list"></div>
+      <div class="container character_list">
+          
+          
+      </div>
     </main>
 
-    <footer>
-      <div class="paginate">
-        <button id="btnPaginatePrevious" type="button">anterior</button>
-        <button id="btnPaginateNext" type="button">próximo</button>
+    <footer class="container-fluid p-5 bg-success d-flex flex-column justify-content-center align-items-center">
+      <div class="row">
+        <nav>
+          <ul class="pagination">
+            <li class="page-item">
+              <a class="page-link bg-dark" id="btnPaginatePrevious" href="#" aria-label="Previous">
+                <span aria-hidden="true">&laquo;</span>
+              </a>
+            </li>
+            <li class="page-item"><a class="page-link bg-dark" href="#">1</a></li>
+            <li class="page-item"><a class="page-link bg-dark" href="#">2</a></li>
+            <li class="page-item"><a class="page-link bg-dark" href="#">3</a></li>
+            <li class="page-item">
+              <a class="page-link bg-dark" id="btnPaginateNext" href="#" aria-label="Next">
+                <span aria-hidden="true">&raquo;</span>
+              </a>
+            </li>
+          </ul>
+        </nav>
       </div>
-      <div id="data_api"></div>
-      <p class="developer_create">Desenvolvido por: Lucas Ferreira em 2023.</p>
+      <div class="row">
+        <div class="col">
+          <div class="text-light d-flex" id="data_api"></div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col">
+          <p class="text-light"><span class="text-primary">Desenvolvido por:</span> Lucas Ferreira <span class="text-primary">em 2023.</span></p>
+        </div>
+      </div>
     </footer>
 
     <script src="./node_modules/bootstrap/dist/js/bootstrap.js"></script>

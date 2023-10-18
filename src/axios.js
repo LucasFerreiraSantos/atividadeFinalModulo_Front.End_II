@@ -33,13 +33,16 @@ function createContainersCards(result) {
     card.classList.add("character_card");
 
     card.innerHTML = `
-      <img src="${character.image}" alt="#">
-      <div>
-      <h3><strong>${character.name}</strong></h3>
-      <p><strong>${character.status} - ${character.species}</strong></p>
-      <p>última localização conhecida</p>
-      <p><strong>${character.location.name}</strong></p>
+    <div class="row">
+      <div class="col-6">
+        <img src="${character.image}" alt="#">
+        <div>
+        <h3><strong>${character.name}</strong></h3>
+        <p><strong>${character.status} - ${character.species}</strong></p>
+        <p>última localização conhecida</p>
+        <p><strong>${character.location.name}</strong></p>
       </div>
+    </div>
     `;
     characterContainer.appendChild(card);
   })
@@ -50,8 +53,8 @@ function totalCharacters(info, result) {
   const totalCharacters = info
   const totalEpisodes = result
   data_api.innerHTML = `
-    <p>PERSONAGENS: ${totalCharacters.count}</p>
-    <p>EPISÓDIOS: ${totalEpisodes[0].episode.length}</p>
+    <p class="p-5"><span class="text-primary">PERSONAGENS:</span> ${totalCharacters.count}</p>
+    <p class="p-5"><span class="text-primary">EPISÓDIOS:</span> ${totalEpisodes[0].episode.length}</p>
   `;
 }
 
