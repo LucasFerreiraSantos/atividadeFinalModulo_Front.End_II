@@ -33,10 +33,10 @@ function createContainersCards(result) {
     card.classList.add("character_list")
 
     card.innerHTML = `
-      <div class="card p-3 text-bg-secondary mb-3 card-width">
+      <div class="card p-3 text-bg-secondary bg-opacity-50 mb-3">
         <div class="row g-0">
           <div class="col-md-4">
-            <img src="${character.image}" class="img-fluid rounded-start" alt="image characters">
+            <img class="img-thumbnail image-card" src="${character.image}" class="img-fluid rounded-start" alt="image characters">
           </div>
           <div class="col-md-8">
             <div class="card-body text-card">
@@ -94,4 +94,78 @@ input_search_character.addEventListener('input', () => {
 
 getCharacters();
 
+
+// const WrapperCards = document.getElementById("wrapper-cards");
+// const currentPageViewEl = document.getElementById("current-page");
+// let currentPage = 1;
+// let currentPageView = Number(currentPageViewEl.innerText);
+// let characters = []; // 20 personagens
+// let charactersView = []; // 6 personagens por página
+
+// function resetCards() {
+//   WrapperCards.innerHTML = "";
+// }
+
+// function setCurrentPageView(newPage) {
+//   currentPageView = newPage;
+//   currentPageViewEl.innerHTML = newPage;
+// }
+
+// function addCard(character) {
+//   WrapperCards.innerHTML += `
+// <div class="card bg-black bg-opacity-10" style="min-width: 250px; max-width: 350px;">
+//   <div class="card-body">
+//     <h5 class="card-title">${character.name}</h5>
+//     <h6 class="card-subtitle mb-2 text-body-secondary">
+//       ${character.species}
+//     </h6>
+//     <p class="card-text">
+//       Origem: ${character.origin.name}
+//     </p>
+//   </div>
+// </div>
+// `;
+// }
+
+// // (characters.slice((page -1) * 6, page * per_page))
+
+// async function fetchCharacters() {
+//   try {
+//     const { data } = await api.get("/character?page=" + currentPage);
+
+//     console.log(data);
+//     characters = data.results;
+//   } catch (error) {
+//     console.log(error);
+//   }
+// }
+
+// function setView() {
+//   charactersView = characters.slice(
+//     (currentPageView - 1) * 6,
+//     currentPageView * 6
+//   );
+//   resetCards();
+//   charactersView.forEach((character) => {
+//     addCard(character);
+//   });
+// }
+
+// function nextPage() {
+//   currentPageView++; // incremento a pagina que o usuário ira ver
+//   setCurrentPageView(currentPageView);
+//   setView();
+// }
+
+// function prevPage() {
+//   setCurrentPageView(--currentPageView);
+//   setView();
+// }
+
+// async function start() {
+//   await fetchCharacters();
+//   setView();
+// }
+
+// start();
 

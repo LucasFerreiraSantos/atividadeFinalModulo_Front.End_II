@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="./node_modules/bootstrap/dist/css/bootstrap.css">
     <link rel="stylesheet" href="./css/style.css" />
   </head>
-  <body>
+  <body class="bg-success">
 
     <header class="container-fluid">
       <nav class="row">
@@ -21,7 +21,7 @@
       </nav>
     </header>
 
-    <section class="container-md text-center">
+    <section class="container-fluid d-flex flex-column justify-content-center align-items-center">
       <div class="row">
         <div class="col">
           <h1 class="fw-bold text-primary">
@@ -29,8 +29,8 @@
           </h1>
         </div>
       </div>
-      <div class="row">
-        <div class="col input-group border border-2 mb-2 rounded-pill">
+      <div class="row w-50">
+        <div class="col input-group border border-2 mb-2 rounded-pill input-seach">
           <input class="form-control border-0 bg-black no-outline text-primary" id="input_search_character" type="text" placeholder="Pesquisar"/>
           <span class="p-2"><img class="image-seach" src="./img/searchmagnifierinterfacesymbol1_79893.svg"></span>
         </div>
@@ -39,9 +39,9 @@
 
     
 
-    <main class="container d-flex justify-content-center">
-      <div class="row g-2">
-        <div class="row row-cols-1 row-cols-md-2 g-4 align-content-center character_list">
+    <main class="container text-center text-sm-center">
+      <div class="row mt-3">
+        <div class="row row-cols-1 row-cols-md-2 character_list">
         </div>
       </div>  
     </main>
@@ -55,9 +55,6 @@
                 <span aria-hidden="true">&laquo;</span>
               </a>
             </li>
-            <li class="page-item"><a class="page-link bg-dark" href="#">1</a></li>
-            <li class="page-item"><a class="page-link bg-dark" href="#">2</a></li>
-            <li class="page-item"><a class="page-link bg-dark" href="#">3</a></li>
             <li class="page-item">
               <a class="page-link bg-dark" id="btnPaginateNext" href="#" aria-label="Next">
                 <span aria-hidden="true">&raquo;</span>
