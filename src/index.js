@@ -2,6 +2,10 @@ const characterContainer = document.querySelector(".character_list");
 const data_api = document.getElementById("data_api");
 const input_search_character = document.getElementById("input_search_character");
 
+const modal = document.getElementById('myModal');
+const myModalAtive = new bootstrap.Modal(modal)
+let modalContainer = document.getElementById('data-api-modal');
+
 let currentPage = 1;
 
 async function getCharacters(page = 1, name = "") {
@@ -15,9 +19,11 @@ async function getCharacters(page = 1, name = "") {
       params,
     });
     const result = response.data.results;
+    console.log(result)
     const info = response.data.info;
 
     createContainersCards(result)
+    containerModal(result)
     totalCharacters(info, result)
 
   } catch (error) {
@@ -25,15 +31,48 @@ async function getCharacters(page = 1, name = "") {
   }
 }
 
+// OPEN MODAL
+function openDetails(){
+  myModalAtive.show()
+  modalContainer.innerHTML = ""
+}
+
+// CONTAINER MODAL
+function containerModal(result){
+  const selectCharacters = result
+  const cards = document.querySelectorAll('.btnCards');
+  const arrayCards = [...cards]
+
+  // BUTTON SELECT
+  cards.forEach(function(card) {
+      card.addEventListener('click', function(e) {
+          const cardClicado = e.target;
+          const index = arrayCards.findIndex(card => card === cardClicado)
+  
+          const detailsCharacter = document.createElement("div");
+          detailsCharacter.classList.add("character_details")
+
+          detailsCharacter.innerHTML = `
+              <img class="img-thumbnail image-card" src="${selectCharacters[index].image}" class="img-fluid rounded-start" alt="image characters">
+              <h3><strong>${selectCharacters[index].name}</strong></h3>
+              <p><strong>${selectCharacters[index].status} - ${selectCharacters[index].species}</strong></p>
+              <p>última localização conhecida</p>
+              <p><strong>${selectCharacters[index].location.name}</strong></p>
+            `;
+          modalContainer.appendChild(detailsCharacter);
+      });
+  });
+}
+
 // CREATE CARDS
 function createContainersCards(result) {
   const characters = result
-  characters.forEach(character => {
+  characters.forEach((character) => {
     const card = document.createElement("div");
     card.classList.add("character_list")
 
     card.innerHTML = `
-      <div class="card p-3 text-bg-secondary bg-opacity-50 mb-3">
+      <div class="card p-3 text-bg-secondary bg-opacity-75 mb-3">
         <div class="row g-0">
           <div class="col-md-4">
             <img class="img-thumbnail image-card" src="${character.image}" class="img-fluid rounded-start" alt="image characters">
@@ -44,12 +83,14 @@ function createContainersCards(result) {
               <p><strong>${character.status} - ${character.species}</strong></p>
               <p>última localização conhecida</p>
               <p><strong>${character.location.name}</strong></p>
+              <button class="btnCards btn btn-success" onclick="openDetails()" type="button">Ver mais...</button>
             </div>
           </div>
         </div>
       </div>
     `;
     characterContainer.appendChild(card);
+    
   })
 }
 
@@ -93,79 +134,4 @@ input_search_character.addEventListener('input', () => {
 })
 
 getCharacters();
-
-
-// const WrapperCards = document.getElementById("wrapper-cards");
-// const currentPageViewEl = document.getElementById("current-page");
-// let currentPage = 1;
-// let currentPageView = Number(currentPageViewEl.innerText);
-// let characters = []; // 20 personagens
-// let charactersView = []; // 6 personagens por página
-
-// function resetCards() {
-//   WrapperCards.innerHTML = "";
-// }
-
-// function setCurrentPageView(newPage) {
-//   currentPageView = newPage;
-//   currentPageViewEl.innerHTML = newPage;
-// }
-
-// function addCard(character) {
-//   WrapperCards.innerHTML += `
-// <div class="card bg-black bg-opacity-10" style="min-width: 250px; max-width: 350px;">
-//   <div class="card-body">
-//     <h5 class="card-title">${character.name}</h5>
-//     <h6 class="card-subtitle mb-2 text-body-secondary">
-//       ${character.species}
-//     </h6>
-//     <p class="card-text">
-//       Origem: ${character.origin.name}
-//     </p>
-//   </div>
-// </div>
-// `;
-// }
-
-// // (characters.slice((page -1) * 6, page * per_page))
-
-// async function fetchCharacters() {
-//   try {
-//     const { data } = await api.get("/character?page=" + currentPage);
-
-//     console.log(data);
-//     characters = data.results;
-//   } catch (error) {
-//     console.log(error);
-//   }
-// }
-
-// function setView() {
-//   charactersView = characters.slice(
-//     (currentPageView - 1) * 6,
-//     currentPageView * 6
-//   );
-//   resetCards();
-//   charactersView.forEach((character) => {
-//     addCard(character);
-//   });
-// }
-
-// function nextPage() {
-//   currentPageView++; // incremento a pagina que o usuário ira ver
-//   setCurrentPageView(currentPageView);
-//   setView();
-// }
-
-// function prevPage() {
-//   setCurrentPageView(--currentPageView);
-//   setView();
-// }
-
-// async function start() {
-//   await fetchCharacters();
-//   setView();
-// }
-
-// start();
 

@@ -10,22 +10,21 @@
     <link rel="stylesheet" href="./css/style.css" />
 
   </head>
-  <body class="bg-success">
+  <body class="bg-success vw-100">
 
     <!-- MODAL -->
-    <div class="modal" tabindex="-1">
-      <div class="modal-dialog">
+    <div id="myModal" class="modal fade" tabindex="-1">
+      <div class="modal-dialog modal-dialog-centered modal-lg modal-fullscreen-md-down">
         <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title">Modal title</h5>
-            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          <div class="modal-header bg-primary">
+            <h5 class="modal-title text-light">Detalhes do personagem</h5>
+            <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
           </div>
           <div class="modal-body">
-            <p>Modal body text goes here.</p>
+            <div id="data-api-modal"></div>
           </div>
-          <div class="modal-footer">
+          <div class="modal-footer bg-primary">
             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-            <button type="button" class="btn btn-primary">Save changes</button>
           </div>
         </div>
       </div>
@@ -61,9 +60,8 @@
 
     <main class="container text-center text-sm-center">
       <div class="row mt-3">
-        <div class="row row-cols-1 row-cols-md-2 character_list">
-        </div>
-      </div>  
+        <div class="row row-cols-1 row-cols-md-2 character_list"></div>
+      </div>
     </main>
 
     <footer class="container-fluid p-5 bg-success d-flex flex-column justify-content-center align-items-center">
@@ -100,6 +98,5 @@
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <script src="./src/baseURL.js"></script>
     <script src="./src/index.js"></script>
-    <script src="./src/modal.js"></script>
   </body>
 </html>
