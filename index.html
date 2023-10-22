@@ -5,11 +5,33 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Final Module Activity - Front-End III</title>
 
+    <!-- STYLESHEETS -->
     <link rel="stylesheet" href="./node_modules/bootstrap/dist/css/bootstrap.css">
     <link rel="stylesheet" href="./css/style.css" />
+
   </head>
   <body class="bg-success">
 
+    <!-- MODAL -->
+    <div class="modal" tabindex="-1">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title">Modal title</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <p>Modal body text goes here.</p>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            <button type="button" class="btn btn-primary">Save changes</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- CONTENT -->
     <header class="container-fluid">
       <nav class="row">
         <div class="col-2">
@@ -36,8 +58,6 @@
         </div>
       </div>
     </section>
-
-    
 
     <main class="container text-center text-sm-center">
       <div class="row mt-3">
@@ -75,10 +95,11 @@
       </div>
     </footer>
 
+    <!-- SCRIPTS -->
     <script src="./node_modules/bootstrap/dist/js/bootstrap.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-    <script src="./src/apiAxios.js"></script>
-    <script src="./src/axios.js"></script>
-    <!-- <script src="./src/fetch.js"></script> -->
+    <script src="./src/baseURL.js"></script>
+    <script src="./src/index.js"></script>
+    <script src="./src/modal.js"></script>
   </body>
 </html>

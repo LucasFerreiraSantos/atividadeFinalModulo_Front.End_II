@@ -25,7 +25,7 @@ async function getCharacters(page = 1, name = "") {
   }
 }
 
-// CRIAR CARDS
+// CREATE CARDS
 function createContainersCards(result) {
   const characters = result
   characters.forEach(character => {
@@ -53,7 +53,7 @@ function createContainersCards(result) {
   })
 }
 
-// PEGAR O TOTAL DE PERSONAGENS
+// GET THE TOTAL CHARACTERS
 function totalCharacters(info, result) {
   const totalCharacters = info
   const totalEpisodes = result
@@ -63,7 +63,7 @@ function totalCharacters(info, result) {
   `;
 }
 
-// VOLTAR UMA PÁGINA
+// GO BACK ONE PAGE
 function previousPage() {
   if (currentPage >= 1) {
     characterContainer.innerHTML = "";
@@ -74,7 +74,7 @@ function previousPage() {
 const btnPaginatePrevious = document.getElementById("btnPaginatePrevious");
 btnPaginatePrevious.addEventListener("click", previousPage);
 
-// AVANÇAR UMA PÁGINA
+// GO ONE PAGE
 function nextPage() {
   if (currentPage < 42) {
     characterContainer.innerHTML = "";
@@ -85,7 +85,7 @@ function nextPage() {
 const btnPaginateNext = document.getElementById("btnPaginateNext");
 btnPaginateNext.addEventListener("click", nextPage);
 
-// PESQUISAR POR NOME
+// SEARCH BY NAME
 input_search_character.addEventListener('input', () => {
   characterContainer.innerHTML = "";
   currentPage = 1
