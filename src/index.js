@@ -175,4 +175,3 @@ input_search_character.addEventListener('input', () => {
 getLocations()
 getEpisodes()
 getCharacters();
-
