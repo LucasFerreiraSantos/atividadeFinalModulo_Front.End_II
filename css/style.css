@@ -17,7 +17,22 @@ body {
   width: 100px;
 }
 
+.image-card {
+  width: 100%;
+  height: 100%;
+  border-radius: 10px 0px 0px 10px;
+}
 
+.card {
+  font-size: 13px;
+  border-radius: 10px;
+
+  transition: 0.8s;
+}
+
+.card:hover{
+  background-color: #56CD42 !important;
+}
 
 .no-outline:focus {
   box-shadow: none;
@@ -35,3 +50,15 @@ body {
   flex-direction: column;
   align-items: center;
 }
+
+.modal-body {
+  background-image: url(../img/paradise-rick.jpeg);
+  background-position: center;
+  background-size: cover;
+  overflow-x: hidden;
+}
+
+.image-top {
+  width: 100px;
+}
+

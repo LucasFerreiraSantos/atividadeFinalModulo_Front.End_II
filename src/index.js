@@ -8,6 +8,30 @@ let modalContainer = document.getElementById('data-api-modal');
 
 let currentPage = 1;
 
+let totalCharactersPersona = 0
+let totalLocations = 0
+let totalEpisodes = 0
+
+// GET TOTAL LOCATION
+async function getLocations(){
+  try{
+    const response = await api.get("/location")
+    totalLocations = response.data.info.count
+  }catch(err){
+    console.log("Erro ao buscar as localizações: ", err)
+  }
+}
+
+// GET TOTAL EPISODE
+async function getEpisodes(){
+  try{
+    const response = await api.get("/episode")
+    totalEpisodes = response.data.info.count
+  }catch(err){
+    console.log("Erro ao buscar todos os episódios: ", err)
+  }
+}
+
 async function getCharacters(page = 1, name = "") {
   try {
     const params = {
@@ -19,13 +43,11 @@ async function getCharacters(page = 1, name = "") {
       params,
     });
     const result = response.data.results;
-    console.log(result)
-    const info = response.data.info;
+    const infoTotal = response.data.info
 
     createContainersCards(result)
     containerModal(result)
-    totalCharacters(info, result)
-
+    totalCharacters(infoTotal)
   } catch (error) {
     console.log("Erro ao chamar API", error);
   }
@@ -53,11 +75,13 @@ function containerModal(result){
           detailsCharacter.classList.add("character_details")
 
           detailsCharacter.innerHTML = `
-              <img class="img-thumbnail image-card" src="${selectCharacters[index].image}" class="img-fluid rounded-start" alt="image characters">
-              <h3><strong>${selectCharacters[index].name}</strong></h3>
-              <p><strong>${selectCharacters[index].status} - ${selectCharacters[index].species}</strong></p>
-              <p>última localização conhecida</p>
-              <p><strong>${selectCharacters[index].location.name}</strong></p>
+              <img src="${selectCharacters[index].image}" class="img-fluid rounded-start" alt="image characters">
+              <div class="text-light">
+                <h3><strong>${selectCharacters[index].name}</strong></h3>
+                <p><strong>${selectCharacters[index].status} - ${selectCharacters[index].species}</strong></p>
+                <p>última localização conhecida</p>
+                <p><strong>${selectCharacters[index].location.name}</strong></p>
+              </div>
             `;
           modalContainer.appendChild(detailsCharacter);
       });
@@ -72,12 +96,12 @@ function createContainersCards(result) {
     card.classList.add("character_list")
 
     card.innerHTML = `
-      <div class="card p-3 text-bg-secondary bg-opacity-75 mb-3">
+      <div class="card text-bg-danger bg-opacity-75 mb-3">
         <div class="row g-0">
-          <div class="col-md-4">
-            <img class="img-thumbnail image-card" src="${character.image}" class="img-fluid rounded-start" alt="image characters">
+          <div class="col-md-5">
+            <img class=" image-card" src="${character.image}" class="img-fluid rounded-start" alt="image characters">
           </div>
-          <div class="col-md-8">
+          <div class="col-md-7">
             <div class="card-body text-card">
               <h3><strong>${character.name}</strong></h3>
               <p><strong>${character.status} - ${character.species}</strong></p>
@@ -95,12 +119,12 @@ function createContainersCards(result) {
 }
 
 // GET THE TOTAL CHARACTERS
-function totalCharacters(info, result) {
-  const totalCharacters = info
-  const totalEpisodes = result
+function totalCharacters(info) {
+  totalCharactersPersona = info
   data_api.innerHTML = `
-    <p class="p-5"><span class="text-primary">PERSONAGENS:</span> ${totalCharacters.count}</p>
-    <p class="p-5"><span class="text-primary">EPISÓDIOS:</span> ${totalEpisodes[0].episode.length}</p>
+    <p class="p-5"><span class="text-primary">PERSONAGENS:</span> ${totalCharactersPersona.count}</p>
+    <p class="p-5"><span class="text-primary">LOCALIZAÇÕES:</span> ${totalLocations}</p>
+    <p class="p-5"><span class="text-primary">EPISÓDIOS:</span> ${totalEpisodes}</p>
   `;
 }
 
@@ -126,6 +150,15 @@ function nextPage() {
 const btnPaginateNext = document.getElementById("btnPaginateNext");
 btnPaginateNext.addEventListener("click", nextPage);
 
+// GO BACK HOME
+function home() {
+  characterContainer.innerHTML = "";
+  currentPage = 1
+  getCharacters(currentPage);
+}
+const goBackHome = document.getElementById("goBackHome")
+goBackHome.addEventListener("click", home)
+
 // SEARCH BY NAME
 input_search_character.addEventListener('input', () => {
   characterContainer.innerHTML = "";
@@ -133,5 +166,7 @@ input_search_character.addEventListener('input', () => {
   getCharacters(currentPage, input_search_character.value)
 })
 
+getLocations()
+getEpisodes()
 getCharacters();
 

@@ -20,7 +20,7 @@
             <h5 class="modal-title text-light">Detalhes do personagem</h5>
             <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
           </div>
-          <div class="modal-body">
+          <div class="modal-body modal-body">
             <div id="data-api-modal"></div>
           </div>
           <div class="modal-footer bg-primary">
@@ -31,13 +31,15 @@
     </div>
 
     <!-- CONTENT -->
-    <header class="container-fluid">
+    <header id="top" class="container-fluid">
       <nav class="row">
         <div class="col-2">
-          <img class="image-fluid p-3 logo-rick-and-morty"
+          <a id="goBackHome" href="#top">
+            <img class="image-fluid p-3 logo-rick-and-morty"
             src="./img/RICK_MORTY_ICON-01.svg"
             alt="rick and morty portal"
-          />
+            />
+          </a>
         </div>
       </nav>
     </header>
@@ -91,6 +93,13 @@
           <p class="text-light"><span class="text-primary">Desenvolvido por:</span> Lucas Ferreira <span class="text-primary">em 2023.</span></p>
         </div>
       </div>
+      <div class="position-fixed">
+        <div class="fixed-bottom d-flex justify-content-end">
+          <a href="#top">
+            <img class="image-top" src="./img/top_icon_124040.svg" alt="image top">
+          </a>
+        </div>
+      </div>      
     </footer>
 
     <!-- SCRIPTS -->

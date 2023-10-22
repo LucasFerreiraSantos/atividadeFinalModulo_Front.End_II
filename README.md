@@ -16,6 +16,9 @@ Fiz estilizações com o uso do [SASS](https://sass-lang.com/), por isso, assim 
 - ```yarn add bootstrap@5.3.2``` caso não tenha o SASS instalado utilize o seguinte comando:
 - ```npm install sass```
 
+Por fim, executar o seguinte comando para compilar as pastas:
+```sass --watch node_modules/bootstrap/scss:node_modules/bootstrap/dist/css```
+
 #### Listagem de personagens Rick and Morty
 
 **Para isso foi criado:**
