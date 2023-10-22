@@ -43,7 +43,9 @@ async function getCharacters(page = 1, name = "") {
       params,
     });
     const result = response.data.results;
+    console.log(result)
     const infoTotal = response.data.info
+    console.log(infoTotal)
 
     createContainersCards(result)
     containerModal(result)
@@ -75,12 +77,17 @@ function containerModal(result){
           detailsCharacter.classList.add("character_details")
 
           detailsCharacter.innerHTML = `
-              <img src="${selectCharacters[index].image}" class="img-fluid rounded-start" alt="image characters">
-              <div class="text-light">
-                <h3><strong>${selectCharacters[index].name}</strong></h3>
-                <p><strong>${selectCharacters[index].status} - ${selectCharacters[index].species}</strong></p>
-                <p>última localização conhecida</p>
-                <p><strong>${selectCharacters[index].location.name}</strong></p>
+              <div>
+                <img class="image-details" src="${selectCharacters[index].image}" class="img-fluid rounded-start" alt="image characters">
+              </div>
+              
+              <div class="text-light text-modal">
+                <h3 class="tittle-modal"><strong>${selectCharacters[index].name}</strong></h3>
+                <h6>Gênero: ${selectCharacters[index].gender};</h6>
+                <p><strong>${selectCharacters[index].status} - ${selectCharacters[index].species};</strong></p>
+                <h6>Origem: ${selectCharacters[index].origin.name};</h6>
+                <p>última localização conhecida:</p>
+                <p><strong>${selectCharacters[index].location.name}.</strong></p>
               </div>
             `;
           modalContainer.appendChild(detailsCharacter);
@@ -104,9 +111,9 @@ function createContainersCards(result) {
           <div class="col-md-7">
             <div class="card-body text-card">
               <h3><strong>${character.name}</strong></h3>
-              <p><strong>${character.status} - ${character.species}</strong></p>
-              <p>última localização conhecida</p>
-              <p><strong>${character.location.name}</strong></p>
+              <p><strong>${character.status} - ${character.species};</strong></p>
+              <p>última localização conhecida:</p>
+              <p><strong>${character.location.name};</strong></p>
               <button class="btnCards" onclick="openDetails()" type="button">Ver mais...</button>
             </div>
           </div>
@@ -114,7 +121,6 @@ function createContainersCards(result) {
       </div>
     `;
     characterContainer.appendChild(card);
-    
   })
 }
 
