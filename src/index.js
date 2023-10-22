@@ -106,7 +106,7 @@ function createContainersCards(result) {
       <div class="card text-bg-danger bg-opacity-75 mb-3">
         <div class="row g-0">
           <div class="col-md-5">
-            <img class=" image-card" src="${character.image}" class="img-fluid rounded-start" alt="image characters">
+            <img class="image-card" src="${character.image}" class="img-fluid rounded-start" alt="image characters">
           </div>
           <div class="col-md-7">
             <div class="card-body text-card">
