@@ -51,7 +51,7 @@ body {
 }
 
 .card:hover{
-  background-color: #56CD42 !important;
+  background-color: var(--secondary-color) !important;
 }
 
 .no-outline:focus {
@@ -61,7 +61,7 @@ body {
 ::-webkit-input-placeholder {
   font-size: 20px !important;
   font-family: 'Ubuntu', sans-serif !important;
-  color: #105718 !important;
+  color: var(--secondary-color) !important;
 }
 
 .character_details {
@@ -135,7 +135,7 @@ body {
   height: 50px;
   border: none;
   outline: none;
-  color: #56CD42;
+  color: var(--secondary-color);
   background: #111;
   cursor: pointer;
   position: relative;
