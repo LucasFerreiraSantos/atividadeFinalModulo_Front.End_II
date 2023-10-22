@@ -107,7 +107,7 @@ function createContainersCards(result) {
               <p><strong>${character.status} - ${character.species}</strong></p>
               <p>última localização conhecida</p>
               <p><strong>${character.location.name}</strong></p>
-              <button class="btnCards btn btn-success" onclick="openDetails()" type="button">Ver mais...</button>
+              <button class="btnCards" onclick="openDetails()" type="button">Ver mais...</button>
             </div>
           </div>
         </div>
