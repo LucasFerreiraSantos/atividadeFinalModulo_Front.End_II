@@ -81,8 +81,8 @@ function containerModal(result){
                 <img class="image-details" src="${selectCharacters[index].image}" class="img-fluid rounded-start" alt="image characters">
               </div>
               
-              <div class="text-light text-modal">
-                <h3 class="tittle-modal"><strong>${selectCharacters[index].name}</strong></h3>
+              <div class="text-light container-modal">
+                <h3 class="title-modal"><strong>${selectCharacters[index].name}</strong></h3>
                 <h6>Gênero: ${selectCharacters[index].gender};</h6>
                 <p><strong>${selectCharacters[index].status} - ${selectCharacters[index].species};</strong></p>
                 <h6>Origem: ${selectCharacters[index].origin.name};</h6>
@@ -103,7 +103,7 @@ function createContainersCards(result) {
     card.classList.add("character_list")
 
     card.innerHTML = `
-      <div class="card text-bg-danger bg-opacity-75 mb-3">
+      <div class="card text-light bg-opacity-75 mb-3">
         <div class="row g-0">
           <div class="col-md-5">
             <img class="image-card" src="${character.image}" class="img-fluid rounded-start" alt="image characters">
@@ -128,9 +128,9 @@ function createContainersCards(result) {
 function totalCharacters(info) {
   totalCharactersPersona = info
   data_api.innerHTML = `
-    <p class="p-5"><span class="text-primary">PERSONAGENS:</span> ${totalCharactersPersona.count}</p>
-    <p class="p-5"><span class="text-primary">LOCALIZAÇÕES:</span> ${totalLocations}</p>
-    <p class="p-5"><span class="text-primary">EPISÓDIOS:</span> ${totalEpisodes}</p>
+    <p class="p-5 fw-medium">PERSONAGENS: <span class="text-light">${totalCharactersPersona.count}</span></p>
+    <p class="p-5 fw-medium">LOCALIZAÇÕES: <span class="text-light">${totalLocations}</span></p>
+    <p class="p-5 fw-medium">EPISÓDIOS: <span class="text-light">${totalEpisodes}</span></p>
   `;
 }
 
