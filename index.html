@@ -1,67 +1,113 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Atividade Final de Módulo - Front-End II</title>
+    <title>Final Module Activity - Front-End III</title>
+
+    <!-- STYLESHEETS -->
+    <!-- <link rel="stylesheet" href="./node_modules/bootstrap/dist/css/bootstrap.css"> -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
     <link rel="stylesheet" href="./css/style.css" />
+
   </head>
-  <body>
-    <header>
-      <nav>
-        <div>
-          <img
-            src="./img/rick-and-morty-portal.png"
-            alt="rick and morty portal"
-          />
+  <body class="bg-success vw-100">
+
+    <!-- MODAL -->
+    <div id="myModal" class="modal fade" tabindex="-1">
+      <div class="modal-dialog modal-dialog-centered modal-xl modal-fullscreen-lg-down">
+        <div class="modal-content">
+          <div class="modal-header bg-dark">
+            <h2 class="modal-title text-light text-uppercase">Detalhes do personagem</h2>
+            <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body modalBody">
+            <div id="data-api-modal"></div>
+          </div>
+          <div class="modal-footer bg-dark">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          </div>
         </div>
-        <div class="search_bar">
-          <input
-            id="input_search_character"
-            type="text"
-            placeholder="Fala o nome de um personagem! E fica tranquilebaaa..."
-            class="search_text"
-          />
-          <a
-            href="#"
-            class="search_btn"
-          >
-            <img
-              src="./img/portal_rick_and_morty.png"
-              alt="portal rick and morty"
-              class="portal_btn"
-            />
-            <img
-              src="./img/rick_suspect.png"
-              alt="rick suspect"
-              class="rick_btn"
+      </div>
+    </div>
+
+    <!-- CONTENT -->
+    <header id="top" class="container-fluid">
+      <nav class="row">
+        <div class="col-2">
+          <a id="goBackHome" href="#top">
+            <img class="image-fluid p-3 logo-rick-and-morty"
+            src="./img/RICK_MORTY_ICON-01.svg"
+            alt="rick and morty portal"
             />
           </a>
         </div>
       </nav>
     </header>
 
-    <main>
-      <div class="character_list"></div>
+    <section class="container-fluid d-flex flex-column justify-content-center align-items-center">
+      <div class="row">
+        <div class="col">
+          <h1 class="fw-bold">
+            API the Rick and Morty
+          </h1>
+        </div>
+      </div>
+      <div class="row w-50">
+        <div class="col input-group border border-2 mb-2 rounded-pill input-seach">
+          <input class="form-control border-0 bg-black no-outline text-primary" id="input_search_character" type="text" placeholder="Pesquisar"/>
+          <span class="p-2"><img class="image-seach" src="./img/searchmagnifierinterfacesymbol1_79893.svg"></span>
+        </div>
+      </div>
+    </section>
+
+    <main class="container text-center text-sm-center">
+      <div class="row mt-3">
+        <div class="row row-cols-1 row-cols-md-2 character_list"></div>
+      </div>
     </main>
 
-    <footer>
-      <div class="paginate">
-        <button id="btnPaginatePrevious" type="button">anterior</button>
-        <button id="btnPaginateNext" type="button">próximo</button>
+    <footer class="container-fluid bg-black mt-5 d-flex flex-column justify-content-center align-items-center">
+      <div class="row mt-5">
+        <nav>
+          <ul class="pagination">
+            <li class="page-item">
+              <a class="page-link bg-dark text-pagination" id="btnPaginatePrevious" href="#" aria-label="Previous">
+                <span aria-hidden="true">&laquo;</span>
+              </a>
+            </li>
+            <li class="page-item">
+              <a class="page-link bg-dark text-pagination" id="btnPaginateNext" href="#" aria-label="Next">
+                <span aria-hidden="true">&raquo;</span>
+              </a>
+            </li>
+          </ul>
+        </nav>
       </div>
-      <img
-        class="imageFooter"
-        src="./img/rick_suspect.png"
-        alt="rick suspect"
-      />
-      <div id="data_api"></div>
-      <p class="developer_create">Desenvolvido por: Lucas Ferreira em 2023.</p>
+      <div class="row">
+        <div class="col">
+          <div class="d-flex" id="data_api"></div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col">
+          <p class="fw-medium">Desenvolvido por: <span class="text-light">Lucas Ferreira</span> em 2023.</span></p>
+        </div>
+      </div>
+      <div class="position-fixed">
+        <div class="fixed-bottom d-flex justify-content-end">
+          <a href="#top">
+            <img class="image-top" src="./img/top_icon_124040.svg" alt="image top">
+          </a>
+        </div>
+      </div>      
     </footer>
 
+    <!-- SCRIPTS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+    <!-- <script src="./node_modules/bootstrap/dist/js/bootstrap.js"></script> -->
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-    <script src="./src/apiAxios.js"></script>
-    <script src="./src/axios.js"></script>
-    <!-- <script src="./src/fetch.js"></script> -->
+    <script src="./src/baseURL.js"></script>
+    <script src="./src/index.js"></script>
   </body>
 </html>
